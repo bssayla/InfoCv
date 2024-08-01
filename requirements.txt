@@ -1,0 +1,10 @@
+# 
+-e .
+
+pytest
+setuptools
+streamlit
+pypdf
+docx
+transformers
+torch
