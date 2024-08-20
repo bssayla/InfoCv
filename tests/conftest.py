@@ -1,10 +1,9 @@
-
 import pytest
 
 
 @pytest.fixture
 def resume_text():
-    return"""
+    return """
         Summary: Highly motivated and results-oriented software engineer with 5+ years of experience in developing and maintaining web applications using Java and Spring framework.
         Title: Senior Software Engineer
         Number of years of experience: 5+ years

@@ -21,6 +21,7 @@ def test_evaluations_imports():
 def test_external_imports():
     import logging
     import os
+
     import streamlit as st
     from docx import Document
     from dotenv import load_dotenv

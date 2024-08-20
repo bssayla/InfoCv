@@ -10,4 +10,4 @@ transformers
 torch
 huggingface_hub
 python-dotenv
-tensorflow
+langchain==0.0.259

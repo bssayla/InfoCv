@@ -15,6 +15,5 @@ setup(
         "huggingface_hub",
         "python-dotenv",
         "transformers",
-        "tensorflow",
     ],
 )
