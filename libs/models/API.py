@@ -1,14 +1,23 @@
-import csv
-from transformers import AutoTokenizer, AutoModelForCausalLM
+import logging
 import torch
 
+
 def get_model_response(prompt, model, tokenizer, max_length=1024):
-    inputs = tokenizer.encode(prompt, return_tensors="pt")
-    outputs = model.generate(inputs, max_length=max_length, num_return_sequences=1, temperature=0.7)
+    logger = logging.getLogger(__name__)
+    logger.info("Getting model response")
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    model.to(device)
+    inputs = tokenizer.encode(prompt, return_tensors="pt").to(device)
+    outputs = model.generate(inputs, max_length=max_length, temperature=0.7,do_sample=True)
     response = tokenizer.decode(outputs[0], skip_special_tokens=True)
+    logger.info("Model response received")
     return response
 
+
 def process_resume(resume_text, model, tokenizer):
+    logger = logging.getLogger(__name__)
+    logger.info("Starting resume processing")
+
     prompt = f"""
     Given the following unorganized text extracted from a resume, please structure the information into the following categories:
 
@@ -52,28 +61,5 @@ def process_resume(resume_text, model, tokenizer):
     """
 
     response = get_model_response(prompt, model, tokenizer)
+    logger.info("Resume processing completed")
     return response
-
-def main():
-    # Load the model and tokenizer
-    model_name = "meta-llama/Llama-2-7b-chat-hf"  # You can change this to other models like "google/gemma-7b"
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
-    model = AutoModelForCausalLM.from_pretrained(model_name)
-
-    # Get input file path
-    input_file = input("Enter the path to the text file containing the resume: ")
-
-    # Read the resume text
-    with open(input_file, 'r') as file:
-        resume_text = file.read()
-
-    # Process the resume
-    structured_resume = process_resume(resume_text, model, tokenizer)
-
-    # Write the output to a CSV file
-    output_file = "structured_resume.csv"
-    with open(output_file, 'w', newline='') as csvfile:
-        writer = csv.writer(csvfile)
-        writer.writerows([line.split(':') for line in structured_resume.split('\n') if line.strip()])
-
-    print(f"Structured resume has been saved to {output_file}")

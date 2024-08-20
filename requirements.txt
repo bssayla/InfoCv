@@ -5,6 +5,9 @@ pytest
 setuptools
 streamlit
 pypdf
-docx
+python-docx
 transformers
 torch
+huggingface_hub
+python-dotenv
+tensorflow
