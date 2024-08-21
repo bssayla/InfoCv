@@ -100,7 +100,7 @@ InfoCV/
 
 ## Contributing
 
-Contributions are welcome! Please read the [`TODO`] file for a list of tasks and improvements.
+Contributions are welcome! Please check [Issues Page](https://github.com/bssayla/InfoCv/issues) for a list of tasks and improvements.
 
 1. Fork the repository.
 2. Create a new branch (`git checkout -b feature-branch`).
