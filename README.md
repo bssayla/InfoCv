@@ -1,6 +1,6 @@
 # InfoCV
 
-InfoCV is a resume processing tool that extracts and processes information from PDF and DOCX files using machine learning models. The tool leverages the Hugging Face Transformers library to process resumes and extract structured information.
+InfoCV is a resume processing tool that extracts and processes information from PDF and DOCX files using Large Language Models. The tool leverages the Hugging Face Transformers library to process resumes and extract structured information.
 
 ## Table of Contents
 
