@@ -29,10 +29,21 @@ InfoCV is a resume processing tool that extracts and processes information from 
     pip install -r requirements.txt
     ```
 
-4. Set up environment variables:
-    - Create a `.env` file in the root directory and add your Hugging Face token:
+4. Set up environment:
+    - If you want to use the Hugging Face API, you need to set up your Hugging Face token.
+        - Create a `.env` file in the root directory and add your Hugging Face token:
         ```env
         HF_TOKEN=your_hugging_face_token
+        ```
+    - If you want to use the local API, you can skip this step.
+        - just install the `Ollama` tool from [Ollama Website](https://ollama.com/)
+        and run the following command:
+        ```sh
+        ollama serve
+        ```
+        - the local API will be running on `http://localhost:11434`: you will fing a message like this:
+        ```plaintext
+        Ollama is running
         ```
 
 ## Usage
@@ -41,9 +52,10 @@ InfoCV is a resume processing tool that extracts and processes information from 
     ```sh
     streamlit run app.py
     ```
-
 2. Upload a resume file (PDF or DOCX) and select a model to process the resume.
-3. press the `Process` and let the magic happen!
+3. choose the model you want to use to process the resume.
+4. choose either using `HugginFace API` or `Local API: Ollama` to process the resume.
+5. press the `Process` and let the magic happen!
 
 ## Project Structure
 
