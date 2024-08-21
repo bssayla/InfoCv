@@ -30,12 +30,7 @@ InfoCV is a resume processing tool that extracts and processes information from 
     ```
 
 4. Set up environment:
-    - If you want to use the Hugging Face API, you need to set up your Hugging Face token.
-        - Create a `.env` file in the root directory and add your Hugging Face token:
-        ```env
-        HF_TOKEN=your_hugging_face_token
-        ```
-    - If you want to use the local API, you can skip this step.
+   - If you want to use the local API (**Recommended**):
         - just install the `Ollama` tool from [Ollama Website](https://ollama.com/)
         and run the following command:
         ```sh
@@ -44,6 +39,11 @@ InfoCV is a resume processing tool that extracts and processes information from 
         - the local API will be running on `http://localhost:11434`: you will fing a message like this:
         ```plaintext
         Ollama is running
+        ```
+    - If you want to use the Hugging Face API, you need to set up your Hugging Face token.
+        - Create a `.env` file in the root directory and add your Hugging Face token:
+        ```env
+        HF_TOKEN=your_hugging_face_token
         ```
 
 ## Usage
