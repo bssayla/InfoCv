@@ -3,10 +3,10 @@ import logging
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-from libs.prompts.prompt import prompts
+from libs.prompts.prompt import get_prompt
 from libs.utils.extraction import extract_text_from_docx, extract_text_from_pdf
 
-PROMPT_NUM = 4
+PROMPT_NUM = 3
 
 
 def get_model_response(prompt, model_name: str, max_length: int = 1024):
@@ -29,7 +29,7 @@ def get_model_response(prompt, model_name: str, max_length: int = 1024):
 def process_resume(resume_text, model_name: str):
     logger = logging.getLogger(__name__)
     logger.info("Starting resume processing")
-    prompt = prompts[PROMPT_NUM].format(resume_text)
+    prompt = get_prompt(PROMPT_NUM, resume_text)
     response = get_model_response(prompt, model_name)
     logger.info("Resume processing completed")
     return response
@@ -51,7 +51,6 @@ def HuggingFace_API(uploaded_file, model_name: str) -> str:
     else:
         logger.error("Invalid file type uploaded")
         return "Invalid file type. Please upload a PDF or DOCX file."
-        return
     structured_resume = process_resume(resume_text, model_name)
     return structured_resume
 
@@ -77,10 +76,10 @@ def Ollama_Locally(uploaded_file, model_name: str) -> str:
         return "Invalid file type. Please upload a PDF or DOCX file."
     if model_name == "meta-llama/Meta-Llama-3.1-8B-Instruct":
         model = OllamaLLM(model="llama3.1:8b")
-        prompt = prompts[PROMPT_NUM].format(resume_text)
+        prompt = get_prompt(PROMPT_NUM, resume_text)
         response = model.invoke(input=prompt)
     elif model_name == "google/gemma-2-9b":
         model = OllamaLLM(model="llama3.1:8b")
-        prompt = prompts[PROMPT_NUM].format(resume_text)
+        prompt = get_prompt(PROMPT_NUM, resume_text)
         response = model.invoke(input=prompt)
     return response

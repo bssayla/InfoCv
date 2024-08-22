@@ -10,6 +10,7 @@ from libs.utils.logging_config import setup_logging
 
 
 def main():
+    structured_resume = "Error: Something went wrong"
     setup_logging()
     logger = logging.getLogger(__name__)
     logger.info("Starting the application")
@@ -19,7 +20,7 @@ def main():
         "Choose a model", ["google/gemma-2-9b", "meta-llama/Meta-Llama-3.1-8B-Instruct"]
     )
     type_of_analysis = st.radio(
-        "Choose the type of analysis", ["Ollama Locally (Recommended)", "HuggingFace API"], index=0
+        "Choose the type of analysis", ["Ollama Locally", "HuggingFace API"], index=0
     )
     button = st.button("Process Resume")
 
