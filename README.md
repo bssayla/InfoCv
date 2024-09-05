@@ -1,6 +1,6 @@
 # InfoCV
 
-InfoCV is a resume processing tool that extracts and processes information from PDF and DOCX files using Large Language Models. The tool leverages the Hugging Face Transformers library to process resumes and extract structured information.
+InfoCV is a resume processing tool that extracts and processes information from PDF and DOCX files using Large Language Models. The tool leverages Ollama to process resumes and extract structured information.
 
 ## Table of Contents
 
@@ -40,11 +40,6 @@ InfoCV is a resume processing tool that extracts and processes information from 
         ```plaintext
         Ollama is running
         ```
-    - If you want to use the Hugging Face API, you need to set up your Hugging Face token.
-        - Create a `.env` file in the root directory and add your Hugging Face token:
-        ```env
-        HF_TOKEN=your_hugging_face_token
-        ```
 
 ## Usage
 
@@ -54,7 +49,7 @@ InfoCV is a resume processing tool that extracts and processes information from 
     ```
 2. Upload a resume file (PDF or DOCX) and select a model to process the resume.
 3. choose the model you want to use to process the resume.
-4. choose either using `HugginFace API` or `Local API: Ollama` to process the resume.
+4. choose either using `resume analysis` or `job fit` to process the resume.
 5. press the `Process` and let the magic happen!
 
 ## Project Structure
