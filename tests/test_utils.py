@@ -2,7 +2,7 @@ import logging
 
 import pytest
 
-from libs.utils.extraction import extract_text_from_docx, extract_text_from_pdf
+from libs.utils.extraction import extract_text_from_docx, extract_text_from_pdf, extract_text
 from libs.utils.logging_config import setup_logging
 
 
@@ -23,3 +23,7 @@ def test_setup_logging():
     logger = logging.getLogger(__name__)
     logger.info("Test logging")
     assert True
+
+
+def test_extract_text():
+   pass
