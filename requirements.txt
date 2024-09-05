@@ -6,8 +6,4 @@ setuptools
 streamlit
 pypdf
 python-docx
-transformers
-torch
-huggingface_hub
-python-dotenv
 langchain==0.0.259

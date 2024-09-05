@@ -1,6 +1,9 @@
-def get_prompt(prompt_num: int, resume_text: str) -> str:
+from typing import Optional
 
-    prompt_1 = f"""
+
+def get_prompt(prompt_num: int, resume_text: str, job_description: Optional[str] = "") -> str:
+
+   prompt_1 = f"""
    Given the following unorganized text extracted from a resume, please structure the information into the following categories:
    Resume Text:
    {resume_text}
@@ -22,115 +25,183 @@ def get_prompt(prompt_num: int, resume_text: str) -> str:
    Professional experience: For this part give the list of the professional experiences they have, the date, the title, the client, the project, the tasks and the tools or methodology used (Date / Title / Client / Project / Tasks / Tools or Methodology)
    If any information is not available, please write 'N/A'.
    """
-    prompt_2 = f"""
+   prompt_2 = f"""
 
-   Please analyze the following unorganized text extracted from a resume and organize the information into specific categories. The final output should be structured as CSV data, following the format outlined below.
+      Please analyze the following unorganized text extracted from a resume and organize the information into specific categories. The final output should be structured as CSV data, following the format outlined below.
 
-   Resume Text:
-   {resume_text}
+      Resume Text:
+      {resume_text}
 
-   CSV Output Format:
+      CSV Output Format:
 
-   1. Personal Information:
-      - Title: "Name,Surname"
+      1. Personal Information:
+         - Title: "Name,Surname"
 
-   2. Soft Skills:
-      - Format: "Soft skills"
+      2. Soft Skills:
+         - Format: "Soft skills"
 
-   3. Technical Skills:
-      - Architectures: "Operating Systems"
-      - Framework/API/Webservices/CMS: "Frameworks, APIs, Webservices, CMS"
-      - Storage/Database/BI: "Storage, Database, BI tools"
-      - DevOps/Cloud/AI: "DevOps, Cloud, AI tools"
-      - Tools/Software/ERP: "Tools, Software, ERP"
+      3. Technical Skills:
+         - Architectures: "Operating Systems"
+         - Framework/API/Webservices/CMS: "Frameworks, APIs, Webservices, CMS"
+         - Storage/Database/BI: "Storage, Database, BI tools"
+         - DevOps/Cloud/AI: "DevOps, Cloud, AI tools"
+         - Tools/Software/ERP: "Tools, Software, ERP"
 
-   4. Languages:
-      - Format: "Language, Level (Beginner, Intermediate, Advanced)"
+      4. Languages:
+         - Format: "Language, Level (Beginner, Intermediate, Advanced)"
 
-   5. Education:
-      - Format: "Year, Degree, University/School"
+      5. Education:
+         - Format: "Year, Degree, University/School"
 
-   6. Certifications:
-      - Format: "Date, Certification Name"
+      6. Certifications:
+         - Format: "Date, Certification Name"
 
-   7. Professional Experience:
-      - Format: "Date, Title, Client, Project, Tasks, Tools/Methodology"
+      7. Professional Experience:
+         - Format: "Date, Title, Client, Project, Tasks, Tools/Methodology"
 
-   For any missing information, please enter 'N/A' in the relevant fields.
+      For any missing information, please enter 'N/A' in the relevant fields.
 
-   Example CSV Output:
+      Example CSV Output:
 
-   ```
-   Name,Surname
-   John,Doe
+      ```
+      Name,Surname
+      John,Doe
 
-   Soft skills
-   Communication, Leadership
+      Soft skills
+      Communication, Leadership
 
-   Operating Systems
-   Linux, Windows
+      Operating Systems
+      Linux, Windows
 
-   Frameworks, APIs, Webservices, CMS
-   React, Node.js, RESTful API
+      Frameworks, APIs, Webservices, CMS
+      React, Node.js, RESTful API
 
-   Storage, Database, BI tools
-   MySQL, MongoDB
+      Storage, Database, BI tools
+      MySQL, MongoDB
 
-   DevOps, Cloud, AI tools
-   Docker, AWS
+      DevOps, Cloud, AI tools
+      Docker, AWS
 
-   Tools, Software, ERP
-   Jira, SAP
+      Tools, Software, ERP
+      Jira, SAP
 
-   Languages
-   English, Advanced
+      Languages
+      English, Advanced
 
-   Year, Degree, University/School
-   2020, Bachelor of Computer Science, XYZ University
+      Year, Degree, University/School
+      2020, Bachelor of Computer Science, XYZ University
 
-   Date, Certification Name
-   2021, AWS Certified Solutions Architect
+      Date, Certification Name
+      2021, AWS Certified Solutions Architect
 
-   Date, Title, Client, Project, Tasks, Tools/Methodology
-   2022, Senior Developer, ABC Corp, E-commerce Platform, Developed features, Agile methodology
-   ```
+      Date, Title, Client, Project, Tasks, Tools/Methodology
+      2022, Senior Developer, ABC Corp, E-commerce Platform, Developed features, Agile methodology
+      ```
 
-   Please extract the information and structure it exactly as described above.
+      Please extract the information and structure it exactly as described above.
    """
-    prompt_3 = f"""
-   Given the following unorganized text extracted from a resume, 
-   please structure the information into a CSV file with the following columns:
-   Resume Text:
-   {resume_text}
-   CSV Columns:
-   Name,Surname,Soft Skills,Other Skills,Languages,Architectures,Frameworks/APIs/Webservices/CMS,Storage/Database/BI,Devops/Cloud/AI,Tools/Software/ERP,Formations (Year/Degree/University),Certifications (Date/Certification),Professional Experience (Date/Title/Client/Project/Tasks/Tools)
-   If any information is not available, please write 'N/A' in the corresponding cell.
-   Please provide the output as a CSV string.
+   prompt_3 = f"""
+      Given the following unorganized text extracted from a resume, 
+      please structure the information into a CSV file with the following columns:
+      Resume Text:
+      {resume_text}
+      CSV Columns:
+      Name,Surname,Soft Skills,Other Skills,Languages,Architectures,Frameworks/APIs/Webservices/CMS,Storage/Database/BI,Devops/Cloud/AI,Tools/Software/ERP,Formations (Year/Degree/University),Certifications (Date/Certification),Professional Experience (Date/Title/Client/Project/Tasks/Tools)
+      If any information is not available, please write 'N/A' in the corresponding cell.
+      Please provide the output as a CSV string.
    """
-    prompt_4 = f"""
+   prompt_4 = f"""
 
-   Please analyze the following unorganized text extracted from a resume and organize the information into specific categories. The final output should be structured as CSV data, following the format outlined below.
+      Please analyze the following unorganized text extracted from a resume and organize the information into specific categories. The final output should be structured as CSV data, following the format outlined below.
 
-   Resume Text:
-   {resume_text}
+      Resume Text:
+      {resume_text}
 
-   CSV Output Format:
+      CSV Output Format:
 
-   "Name,Surname", "Soft skills","Operating Systems","Frameworks", "APIs", "Webservices", "CMS","Storage", "Database", "BI tools","DevOps", "Cloud", "AI tools","Tools", "Software", "ERP","Language", "Level (Beginner, Intermediate, Advanced)","Year", "Degree", "University/School","Certification Date", "Certification Name", "Profissional Title","Date", "Client", "Project", "Tasks", "Tools/Methodology"
+      "Name,Surname", "Soft skills","Operating Systems","Frameworks", "APIs", "Webservices", "CMS","Storage", "Database", "BI tools","DevOps", "Cloud", "AI tools","Tools", "Software", "ERP","Language", "Level (Beginner, Intermediate, Advanced)","Year", "Degree", "University/School","Certification Date", "Certification Name", "Profissional Title","Date", "Client", "Project", "Tasks", "Tools/Methodology"
 
-   For any missing information, please enter 'N/A' in the relevant fields.
+      For any missing information, please enter 'N/A' in the relevant fields.
 
-   Example CSV Output:
+      Example CSV Output:
 
-   ```
-   "Name,Surname", "Soft skills","Operating Systems","Frameworks", "APIs", "Webservices", "CMS","Storage", "Database", "BI tools","DevOps", "Cloud", "AI tools","Tools", "Software", "ERP","Language", "Level (Beginner, Intermediate, Advanced)","Year", "Degree", "University/School","Certification Date", "Certification Name", "Profissional Title","Date", "Client", "Project", "Tasks", "Tools/Methodology"    
-   John,Doe,Communication, Linux,React,MySQL,Docker,Jira,English,Advanced, 2020, Bachelor of Computer Science, XYZ University, 2021, AWS Certified Solutions Architect, 2022, Senior Developer, ABC Corp, E-commerce Platform, Developed features, Agile methodology
-   ,Leadership,Windows,Node.js,MongoDB,AWS,SAP,Frensh,Beginner
-   ,,,RESTful API
+      ```
+      "Name,Surname", "Soft skills","Operating Systems","Frameworks", "APIs", "Webservices", "CMS","Storage", "Database", "BI tools","DevOps", "Cloud", "AI tools","Tools", "Software", "ERP","Language", "Level (Beginner, Intermediate, Advanced)","Year", "Degree", "University/School","Certification Date", "Certification Name", "Profissional Title","Date", "Client", "Project", "Tasks", "Tools/Methodology"    
+      John,Doe,Communication, Linux, React - MySQL - Docker - Jira, English,Advanced, 2020, Bachelor of Computer Science, XYZ University, 2021, AWS Certified Solutions Architect, 2022, Senior Developer, ABC Corp, E-commerce Platform, Developed features, Agile methodology
+      ,Leadership,Windows,Node.js,MongoDB,AWS,SAP,Frensh,Beginner
+      ,,,RESTful API
 
-   ```
+      ```
 
-   Please extract the information and structure it exactly as described above.
+      Please extract the information and structure it exactly as described above.
    """
-    prompts = [prompt_1, prompt_2, prompt_3, prompt_4]
-    return prompts[prompt_num]
+   prompt_5 = f"""
+
+      {job_description}
+      Given a job description and text extracted from a resume, please analyze the candidate's profile in detail to determine if they are a good fit for the job. Follow these steps:      Job Description:
+      Resume Text:
+      {resume_text}
+
+      Analysis Steps:
+      1. Extract key requirements from the job description, including required skills, experience, and qualifications.
+
+      2. Identify the candidate's skills, experience, and qualifications from the resume text.
+
+      3. Compare the job requirements with the candidate's profile, noting matches and gaps.
+
+      4. Evaluate the candidate's relevant experience and its alignment with the job requirements.
+
+      5. Assess any additional qualifications or skills the candidate possesses that could be beneficial for the role.
+
+      6. Consider any potential red flags or mismatches between the job requirements and the candidate's profile.
+
+      7. Provide a summary of the candidate's strengths and weaknesses in relation to the job.
+
+
+      8. Give a final recommendation on whether the profile is a good fit for the job, with a brief explanation.
+
+      Please provide your analysis and recommendation in a clear, step-by-step format. Be objective and thorough in your assessment.
+   """
+   prompt_6 = f"""
+      **Task:** Extract relevant information from the following resume text and return it in CSV format **without any additional text or explanations**.
+
+      **Resume Text:**
+
+      {resume_text}
+
+      **Desired CSV Fields:**
+
+      * Full Name
+      * Email Address
+      * Phone Number
+      * LinkedIn Profile URL
+      * Skills (as a comma-separated list)
+      * Work Experience (each entry with company, title, dates)
+      * Education (each entry with institution, degree, dates)
+
+
+      **Instructions:**
+
+      1. **Identify the requested information within the resume text.**
+      2. **Organize the extracted information into a CSV format** with the specified fields as the header row.
+      3. **Return only the raw CSV content** without any introductory text, explanations, or commentary.
+
+
+      **Example Output:**
+
+      ```csv
+      Full Name,Email Address,Phone Number,LinkedIn Profile URL,Skills,Work Experience,Education
+      John Doe,john.doe@example.com,+1-555-123-4567,linkedin.com/in/johndoe,Python, Java, Communication,Project Manager, ABC Company, 2020-Present,Harvard University, Master of Science in Computer Science, 2018-2020
+      ```
+
+
+      **Note:**
+
+      * The resume text may be in various formats (plain text, formatted text, etc.).
+      * You may need to infer some information based on the context of the resume.
+      * Ensure the CSV output is properly formatted with commas separating fields and newlines separating rows. 
+      * Do not include any extra characters or information beyond the requested CSV data. 
+
+   """
+   prompts = [prompt_1, prompt_2, prompt_3, prompt_4, prompt_5, prompt_6]
+   return prompts[prompt_num - 1]
