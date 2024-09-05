@@ -12,8 +12,5 @@ setup(
         "streamlit",
         "pypdf",
         "docx",
-        "huggingface_hub",
-        "python-dotenv",
-        "transformers",
     ],
 )

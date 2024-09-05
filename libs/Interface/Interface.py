@@ -1,11 +1,6 @@
 import logging
-import os
-
 import streamlit as st
-from dotenv import load_dotenv
-from huggingface_hub import login
-
-from libs.models.API import HuggingFace_API, Ollama_Locally
+from libs.models.API import Extract_Data, Job_Fit
 from libs.utils.logging_config import setup_logging
 
 
@@ -19,23 +14,26 @@ def main():
     model_name = st.selectbox(
         "Choose a model", ["google/gemma-2-9b", "meta-llama/Meta-Llama-3.1-8B-Instruct"]
     )
-    type_of_analysis = st.radio(
-        "Choose the type of analysis", ["Ollama Locally", "HuggingFace API"], index=0
-    )
-    button = st.button("Process Resume")
+    resume_analysis_tab, job_fit_tab = st.tabs(["Resume Analysis", "Job Fit"])
 
-    if uploaded_file and button:
-        if type_of_analysis == "HuggingFace API":
-            load_dotenv()
-            TOKEN = os.getenv("HF_TOKEN")
-            if not TOKEN:
-                logger.error("Hugging Face token not found in environment variables")
-                return
-            login(token=TOKEN, add_to_git_credential=True)
-            logger.info("Logged into Hugging Face Hub successfully")
-            structured_resume = HuggingFace_API(uploaded_file, model_name)
-        elif type_of_analysis == "Ollama Locally":
-            logger.info("Starting Ollama Locally")
-            structured_resume = Ollama_Locally(uploaded_file, model_name)
-        st.write(structured_resume)
+    with resume_analysis_tab:
+        button_1 = st.button("Process Resume", key="resume")
+
+    with job_fit_tab:
+        job_description = st.text_area("Enter the job description")
+        button_2 = st.button("Process Job Fit", key="job_fit")
+
+    if uploaded_file and button_1:
+        structured_resume = Extract_Data(
+            uploaded_file=uploaded_file, model_name=model_name
+        )
+        resume_analysis_tab.write(structured_resume)
         logger.info("Resume processed successfully")
+    elif uploaded_file and button_2:
+        structured_resume = Job_Fit(
+            uploaded_file=uploaded_file,
+            model_name=model_name,
+            job_description=job_description
+        )
+        job_fit_tab.write(structured_resume)
+        logger.info("Job fit analysis completed")
