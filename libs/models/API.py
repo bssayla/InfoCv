@@ -49,7 +49,7 @@ def Ollama_Locally(
 def Job_Fit(uploaded_file, model_name, job_description):
     logger = logging.getLogger(__name__)
     logger.info("Starting job fit analysis")
-    
+
     model_response = Ollama_Locally(uploaded_file, model_name, "job_fit", job_description)
     return model_response
 

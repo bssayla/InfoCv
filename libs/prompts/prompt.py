@@ -3,7 +3,7 @@ from typing import Optional
 
 def get_prompt(prompt_num: int, resume_text: str, job_description: Optional[str] = "") -> str:
 
-   prompt_1 = f"""
+    prompt_1 = f"""
    Given the following unorganized text extracted from a resume, please structure the information into the following categories:
    Resume Text:
    {resume_text}
@@ -25,7 +25,7 @@ def get_prompt(prompt_num: int, resume_text: str, job_description: Optional[str]
    Professional experience: For this part give the list of the professional experiences they have, the date, the title, the client, the project, the tasks and the tools or methodology used (Date / Title / Client / Project / Tasks / Tools or Methodology)
    If any information is not available, please write 'N/A'.
    """
-   prompt_2 = f"""
+    prompt_2 = f"""
 
       Please analyze the following unorganized text extracted from a resume and organize the information into specific categories. The final output should be structured as CSV data, following the format outlined below.
 
@@ -100,7 +100,7 @@ def get_prompt(prompt_num: int, resume_text: str, job_description: Optional[str]
 
       Please extract the information and structure it exactly as described above.
    """
-   prompt_3 = f"""
+    prompt_3 = f"""
       Given the following unorganized text extracted from a resume, 
       please structure the information into a CSV file with the following columns:
       Resume Text:
@@ -110,7 +110,7 @@ def get_prompt(prompt_num: int, resume_text: str, job_description: Optional[str]
       If any information is not available, please write 'N/A' in the corresponding cell.
       Please provide the output as a CSV string.
    """
-   prompt_4 = f"""
+    prompt_4 = f"""
 
       Please analyze the following unorganized text extracted from a resume and organize the information into specific categories. The final output should be structured as CSV data, following the format outlined below.
 
@@ -135,7 +135,7 @@ def get_prompt(prompt_num: int, resume_text: str, job_description: Optional[str]
 
       Please extract the information and structure it exactly as described above.
    """
-   prompt_5 = f"""
+    prompt_5 = f"""
 
       {job_description}
       Given a job description and text extracted from a resume, please analyze the candidate's profile in detail to determine if they are a good fit for the job. Follow these steps:      Job Description:
@@ -162,7 +162,7 @@ def get_prompt(prompt_num: int, resume_text: str, job_description: Optional[str]
 
       Please provide your analysis and recommendation in a clear, step-by-step format. Be objective and thorough in your assessment.
    """
-   prompt_6 = f"""
+    prompt_6 = f"""
       **Task:** Extract relevant information from the following resume text and return it in CSV format **without any additional text or explanations**.
 
       **Resume Text:**
@@ -203,5 +203,5 @@ def get_prompt(prompt_num: int, resume_text: str, job_description: Optional[str]
       * Do not include any extra characters or information beyond the requested CSV data. 
 
    """
-   prompts = [prompt_1, prompt_2, prompt_3, prompt_4, prompt_5, prompt_6]
-   return prompts[prompt_num - 1]
+    prompts = [prompt_1, prompt_2, prompt_3, prompt_4, prompt_5, prompt_6]
+    return prompts[prompt_num - 1]

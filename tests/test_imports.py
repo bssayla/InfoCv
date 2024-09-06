@@ -6,12 +6,12 @@ def test_interface_imports():
 
 
 def test_utils_imports():
-    from libs.utils.extraction import extract_text_from_docx, extract_text_from_pdf, extract_text
+    from libs.utils.extraction import extract_text, extract_text_from_docx, extract_text_from_pdf
     from libs.utils.logging_config import setup_logging
 
 
 def test_models_imports():
-    from libs.models.API import process_resume, Ollama_Locally, Job_Fit, Extract_Data
+    from libs.models.API import Extract_Data, Job_Fit, Ollama_Locally, process_resume
 
 
 def test_evaluations_imports():

@@ -1,5 +1,7 @@
 import logging
+
 import streamlit as st
+
 from libs.models.API import Extract_Data, Job_Fit
 from libs.utils.logging_config import setup_logging
 
@@ -24,16 +26,12 @@ def main():
         button_2 = st.button("Process Job Fit", key="job_fit")
 
     if uploaded_file and button_1:
-        structured_resume = Extract_Data(
-            uploaded_file=uploaded_file, model_name=model_name
-        )
+        structured_resume = Extract_Data(uploaded_file=uploaded_file, model_name=model_name)
         resume_analysis_tab.write(structured_resume)
         logger.info("Resume processed successfully")
     elif uploaded_file and button_2:
         structured_resume = Job_Fit(
-            uploaded_file=uploaded_file,
-            model_name=model_name,
-            job_description=job_description
+            uploaded_file=uploaded_file, model_name=model_name, job_description=job_description
         )
         job_fit_tab.write(structured_resume)
         logger.info("Job fit analysis completed")
