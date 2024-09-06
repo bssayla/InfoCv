@@ -105,3 +105,19 @@ Contributions are welcome! Please check [Issues Page](https://github.com/bssayla
 
 ## License
 Free software: [MIT license](LICENSE)
+
+### Reporting Issues
+
+When reporting issues, please use our issue templates. We have templates for different types of issues to ensure we get all the necessary information:
+
+1. **Bug Reports**: Use this template when you encounter a problem with the existing functionality.
+2. **Feature Requests**: Use this when you want to suggest a new feature or enhancement.
+3. **Documentation Improvements**: Use this to suggest changes or additions to our documentation.
+
+To use a template:
+1. Go to the "Issues" tab in our GitHub repository
+2. Click on "New Issue"
+3. Choose the appropriate template from the list
+4. Fill out the template with as much detail as possible
+
+Using these templates helps us address issues more effectively and efficiently. Thank you for your contributions!
