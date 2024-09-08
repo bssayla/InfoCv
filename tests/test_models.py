@@ -2,12 +2,8 @@ from unittest.mock import patch
 
 import pytest
 
-from libs.models.API import Extract_Data, Job_Fit, Ollama_Locally, process_resume
+from libs.models.API import Extract_Data, Job_Fit, Ollama_Locally
 
-
-@pytest.mark.skip(reason="Not implemented yet")
-def test_process_resume(resume_text):
-    pass
 
 
 @pytest.mark.skip(reason="Not implemented yet")
