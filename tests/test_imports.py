@@ -11,7 +11,7 @@ def test_utils_imports():
 
 
 def test_models_imports():
-    from libs.models.API import Extract_Data, Job_Fit, Ollama_Locally, process_resume
+    from libs.models.API import Extract_Data, Job_Fit, Ollama_Locally
 
 
 def test_evaluations_imports():
