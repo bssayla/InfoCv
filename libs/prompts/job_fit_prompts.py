@@ -23,5 +23,28 @@ job_fitting_prompt_1= """
 
       8. Give a final recommendation on whether the profile is a good fit for the job, with a brief explanation.
 
-      Please provide your analysis and recommendation in a clear, step-by-step format. Be objective and thorough in your assessment.
+      Here's a the scoring system you should use to evaluate the candidate's profile: 
+
+      1. Skills Match:
+      Rate how well the candidate's technical skills align with those required in the job description. (0-10 points)
+      2. Experience Level:
+      Evaluate if the candidate's years of experience meet or exceed the job requirements. (0-10 points)
+      3. Industry Relevance:
+      Assess how closely the candidate's industry experience matches the job's industry. (0-10 points)
+      4. Education:
+      Compare the candidate's educational background to the job's educational requirements. (0-10 points) 
+      5. Key Achievements:
+      Rate the relevance and impressiveness of the candidate's past achievements in relation to the job. (0-10 points)
+      6. Job Title Alignment:
+      Evaluate how closely the candidate's previous job titles match the position they're applying for. (0-10 points)
+      7. Soft Skills:
+      Assess the presence and relevance of soft skills mentioned in the resume compared to those in the job description. (0-10 points)
+      8. Certifications:
+      Rate the relevance and value of any certifications the candidate has in relation to the job requirements. (0-10 points)
+      9. Project Experience:
+      Evaluate how well the candidate's project experience aligns with the types of projects mentioned in the job description. (0-10 points)
+      10. Cultural Fit:
+      Based on the resume and job description, rate how well the candidate's values and work style might fit the company culture. (0-10 points)
+
+      Give a the total score of the candidate's profile based on the scoring system above and Please provide your analysis and recommendation in a clear, step-by-step format. Be objective and thorough in your assessment.
    """
