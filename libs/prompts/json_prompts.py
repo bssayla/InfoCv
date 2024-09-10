@@ -47,6 +47,7 @@ extract_data_from_resume_as_json_1 = """
     * You may need to infer some information based on the context of the resume.
     * Ensure the JSON output is properly formatted with correct key-value pairs, arrays, and data types.
     * Do not include any extra characters or information beyond the requested JSON data. 
+    * Make sure the JSON is between ```json``` tags.
 
 
 """

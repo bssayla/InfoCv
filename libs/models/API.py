@@ -36,12 +36,8 @@ def Ollama_Locally(
         prompt = resume_anlysis_prompt_to_try.format(resume_text=resume_text)
 
     # get the model response
-    if model_name == "meta-llama/Meta-Llama-3.1-8B-Instruct":
-        model = OllamaLLM(model="llama3.1:8b")
-        response = model.invoke(input=prompt)
-    elif model_name == "google/gemma-2-9b":
-        model = OllamaLLM(model="llama3.1:8b")
-        response = model.invoke(input=prompt)
+    model = OllamaLLM(model=model_name)
+    response = model.invoke(input=prompt)
     logger.info("Model response received")
     return response
 
