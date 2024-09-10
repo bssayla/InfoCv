@@ -18,7 +18,7 @@ def main():
     # use `ollama list` command to get the list of models
     ollama_cmd_output = subprocess.run(["ollama", "list"], capture_output=True, text=True)
     ollama_cmd_output = ollama_cmd_output.stdout.split("\n")[1:-1]
-    names = [name.split()[0] for name in ollama_cmd_output]
+    names = [name.split()[0] for name in ollama_cmd_output] or ["No models available"]
     model_name = st.selectbox(
         "Choose a model", names
     )
