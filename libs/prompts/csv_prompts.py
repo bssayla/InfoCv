@@ -22,6 +22,7 @@ extract_data_from_resume_as_csv_1 = """
    If any information is not available, please write 'N/A'.
 """
 extract_data_from_resume_as_csv_2 = """
+
     Please analyze the following unorganized text extracted from a resume and organize the information into specific categories. The final output should be structured as CSV data, following the format outlined below.
 
     Resume Text:
