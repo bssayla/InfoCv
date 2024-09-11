@@ -23,6 +23,7 @@ def main():
     st.write(
         "This is a web application that extracts information from resumes and provides a job fit analysis"
     )
+    
     # get a file from the user
     uploaded_file = st.file_uploader("Choose a file", type=["pdf", "docx"])
     
