@@ -12,6 +12,17 @@ def main():
     setup_logging()
     logger = logging.getLogger(__name__)
     logger.info("Starting the application")
+    # Title and description
+    st.set_page_config(
+        page_title="Resume Analysis and Job Fit",
+        page_icon="images/logo.png",
+        initial_sidebar_state="auto",
+    )
+    st.image("images/logo.png", width=80)
+    st.title("Resume Analysis and Job Fit")
+    st.write(
+        "This is a web application that extracts information from resumes and provides a job fit analysis"
+    )
     # get a file from the user
     uploaded_file = st.file_uploader("Choose a file", type=["pdf", "docx"])
     
