@@ -1,4 +1,4 @@
-job_fitting_prompt_1= """
+job_fitting_prompt_1 = """
 
       {job_description}
       Given a job description and text extracted from a resume, please analyze the candidate's profile in detail to determine if they are a good fit for the job. Follow these steps:      Job Description:
