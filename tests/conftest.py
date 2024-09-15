@@ -1,3 +1,5 @@
+from unittest.mock import MagicMock, patch
+
 import pytest
 
 
@@ -31,3 +33,75 @@ def resume_text():
         Tasks: Design and development of RESTful APIs, implementation of microservices, database design and optimization, code reviews, mentoring junior developers
         Tools / Methodology: Java, Spring Boot, Spring Data, Spring Security, MySQL, Agile, Scrum
         """
+
+
+@pytest.fixture
+def mock_setup_logging():
+    with patch("libs.Interface.Interface.setup_logging") as mock:
+        yield mock
+
+
+@pytest.fixture
+def mock_logger():
+    with patch("libs.Interface.Interface.logging.getLogger") as mock:
+        logger = MagicMock()
+        mock.return_value = logger
+        yield logger
+
+
+@pytest.fixture
+def mock_file_uploader():
+    with patch("libs.Interface.Interface.st.file_uploader") as mock:
+        mock.return_value = MagicMock()
+        yield mock
+
+
+@pytest.fixture
+def mock_subprocess_run():
+    with patch("libs.Interface.Interface.subprocess.run") as mock:
+        mock.return_value = MagicMock(stdout="model1\nmodel2\n")
+        yield mock
+
+
+@pytest.fixture
+def mock_selectbox():
+    with patch("libs.Interface.Interface.st.selectbox") as mock:
+        mock.return_value = "model1"
+        yield mock
+
+
+@pytest.fixture
+def mock_tabs():
+    with patch("libs.Interface.Interface.st.tabs") as mock:
+        resume_tab = MagicMock()
+        job_fit_tab = MagicMock()
+        mock.return_value = (resume_tab, job_fit_tab)
+        yield resume_tab, job_fit_tab
+
+
+@pytest.fixture
+def mock_button():
+    with patch("libs.Interface.Interface.st.button") as mock:
+        mock.side_effect = [True, False]
+        yield mock
+
+
+@pytest.fixture
+def mock_text_area():
+    with patch("libs.Interface.Interface.st.text_area") as mock:
+        mock.return_value = "Sample job description"
+        yield mock
+
+
+@pytest.fixture
+def mock_extract_data():
+    with patch("libs.Interface.Interface.Extract_Data") as mock:
+        mock.return_value = "Extracted Data"
+        yield mock
+
+
+@pytest.fixture
+def mock_job_fit():
+    with patch("libs.Interface.Interface.Job_Fit") as mock:
+        mock.return_value = "Job Fit Data"
+        yield mock
