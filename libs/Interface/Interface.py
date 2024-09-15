@@ -1,10 +1,10 @@
 import logging
+import subprocess
 
 import streamlit as st
 
 from libs.models.API import Extract_Data, Job_Fit
 from libs.utils.logging_config import setup_logging
-import subprocess
 
 
 def main():
@@ -14,14 +14,12 @@ def main():
     logger.info("Starting the application")
     # get a file from the user
     uploaded_file = st.file_uploader("Choose a file", type=["pdf", "docx"])
-    
+
     # use `ollama list` command to get the list of models
     ollama_cmd_output = subprocess.run(["ollama", "list"], capture_output=True, text=True)
     ollama_cmd_output = ollama_cmd_output.stdout.split("\n")[1:-1]
     names = [name.split()[0] for name in ollama_cmd_output] or ["No models available"]
-    model_name = st.selectbox(
-        "Choose a model", names
-    )
+    model_name = st.selectbox("Choose a model", names)
     resume_analysis_tab, job_fit_tab = st.tabs(["Resume Analysis", "Job Fit"])
 
     with resume_analysis_tab:

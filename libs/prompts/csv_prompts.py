@@ -1,4 +1,3 @@
-
 extract_data_from_resume_as_csv_1 = """
    Given the following unorganized text extracted from a resume, please structure the information into the following categories:
    Resume Text:

@@ -2,7 +2,7 @@ import logging
 from typing import Optional
 
 from langchain_ollama import OllamaLLM
-from libs.prompts.job_fit_prompts import job_fitting_prompt_1
+
 from libs.prompts.csv_prompts import (
     extract_data_from_resume_as_csv_1,
     extract_data_from_resume_as_csv_2,
@@ -10,8 +10,8 @@ from libs.prompts.csv_prompts import (
     extract_data_from_resume_as_csv_4,
     extract_data_from_resume_as_csv_5,
 )
+from libs.prompts.job_fit_prompts import job_fitting_prompt_1
 from libs.prompts.json_prompts import extract_data_from_resume_as_json_1
-
 from libs.utils.extraction import extract_text
 
 resume_anlysis_prompt_to_try = extract_data_from_resume_as_json_1
@@ -30,7 +30,9 @@ def Ollama_Locally(
     # get the prompt
     if type_of_analysis == "job_fit":
         logger.info("Getting prompt for job fit analysis")
-        prompt = job_fitting_prompt_to_try.format(resume_text=resume_text, job_description=job_description)
+        prompt = job_fitting_prompt_to_try.format(
+            resume_text=resume_text, job_description=job_description
+        )
     elif type_of_analysis == "resume_analysis":
         logger.info("Getting prompt for resume analysis")
         prompt = resume_anlysis_prompt_to_try.format(resume_text=resume_text)
