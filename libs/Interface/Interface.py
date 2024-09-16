@@ -27,10 +27,14 @@ def main():
     # get a file from the user
     uploaded_file = st.file_uploader("Choose a file", type=["pdf", "docx"])
 
-    # use `ollama list` command to get the list of models
-    ollama_cmd_output = subprocess.run(["ollama", "list"], capture_output=True, text=True)
-    ollama_cmd_output = ollama_cmd_output.stdout.split("\n")[1:-1]
-    names = [name.split()[0] for name in ollama_cmd_output] or ["No models available"]
+    try:
+        # use `ollama list` command to get the list of models
+        ollama_cmd_output = subprocess.run(["ollama", "list"], capture_output=True, text=True)
+        ollama_cmd_output = ollama_cmd_output.stdout.split("\n")[1:-1]
+        names = [name.split()[0] for name in ollama_cmd_output] or ["No models available"]
+    except Exception as e:
+        st.error(f"Error occurred while retrieving the list of models: {str(e)}")
+        names = ["No models available"]
     model_name = st.selectbox("Choose a model", names)
     resume_analysis_tab, job_fit_tab = st.tabs(["Resume Analysis", "Job Fit"])
 
