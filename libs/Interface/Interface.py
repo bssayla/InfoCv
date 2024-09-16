@@ -15,10 +15,10 @@ def main():
     # Title and description
     st.set_page_config(
         page_title="Resume Analysis and Job Fit",
-        page_icon="images/logo.png",
+        page_icon="assets/logo.png",
         initial_sidebar_state="auto",
     )
-    st.image("images/logo.png", width=80)
+    st.image("assets/logo.png", width=80)
     st.title("Resume Analysis and Job Fit")
     st.write(
         "This is a web application that extracts information from resumes and provides a job fit analysis"
