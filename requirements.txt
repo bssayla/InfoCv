@@ -7,3 +7,4 @@ streamlit
 pypdf
 python-docx
 langchain==0.0.259
+langchain_ollama
