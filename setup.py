@@ -12,5 +12,8 @@ setup(
         "streamlit",
         "pypdf",
         "docx",
+        "langchain",
+        "langchain_ollama",
+        "langsmith",
     ],
 )

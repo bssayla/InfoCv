@@ -6,5 +6,6 @@ setuptools
 streamlit
 pypdf
 python-docx
-langchain==0.0.259
+langchain
 langchain_ollama
+langsmith
