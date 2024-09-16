@@ -3,11 +3,18 @@
 InfoCV is a resume processing tool that extracts and processes information from PDF and DOCX files using Large Language Models. The tool leverages Ollama to:
 ## 1. Resume Analysis:
 the tool extracts information from the resume and provides a JSON output with the extracted information.
-![Watch the video](assets/demo_data_extraction.mp4)
+
+
+https://github.com/user-attachments/assets/1b6e70b1-8fee-497a-a3f6-a1f09d3c5208
+
+
 
 ## 2. Job Fit:
 the tool matches the extracted information from the resume with the job description to provide a job fit score.
-![Watch the video](assets/demo_job_fit.mp4)
+
+
+https://github.com/user-attachments/assets/7ce8056a-baa2-4654-9de8-dd484820f2de
+
 
 
 ## Table of Contents
