@@ -9,4 +9,3 @@ python-docx
 langchain
 langchain_ollama
 langsmith
-dotenv
