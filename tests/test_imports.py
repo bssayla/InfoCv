@@ -26,7 +26,6 @@ def test_external_imports():
 
     import streamlit as st
     from docx import Document
-    from dotenv import load_dotenv
     from langchain_ollama import OllamaLLM
     from pypdf import PdfReader
     from setuptools import find_packages, setup

@@ -15,6 +15,5 @@ setup(
         "langchain",
         "langchain_ollama",
         "langsmith",
-        "dotenv",
     ],
 )
