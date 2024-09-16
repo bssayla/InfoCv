@@ -1,6 +1,21 @@
 # InfoCV
 
-InfoCV is a resume processing tool that extracts and processes information from PDF and DOCX files using Large Language Models. The tool leverages Ollama to process resumes and extract structured information.
+InfoCV is a resume processing tool that extracts and processes information from PDF and DOCX files using Large Language Models. The tool leverages Ollama to:
+## 1. Resume Analysis:
+the tool extracts information from the resume and provides a JSON output with the extracted information.
+
+
+https://github.com/user-attachments/assets/1b6e70b1-8fee-497a-a3f6-a1f09d3c5208
+
+
+
+## 2. Job Fit:
+the tool matches the extracted information from the resume with the job description to provide a job fit score.
+
+
+https://github.com/user-attachments/assets/7ce8056a-baa2-4654-9de8-dd484820f2de
+
+
 
 ## Table of Contents
 
@@ -9,12 +24,13 @@ InfoCV is a resume processing tool that extracts and processes information from 
 - [Project Structure](#project-structure)
 - [Contributing](#contributing)
 - [License](#license)
+- [Reporting Issues](#reporting-issues)
 
 ## Installation
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/yourusername/InfoCV.git
+    git clone https://github.com/bssayla/InfoCV.git
     cd InfoCV
     ```
 
@@ -29,17 +45,24 @@ InfoCV is a resume processing tool that extracts and processes information from 
     pip install -r requirements.txt
     ```
 
-4. Set up environment:
+4. Set up the environment:
    - If you want to use the local API (**Recommended**):
-        - just install the `Ollama` tool from [Ollama Website](https://ollama.com/)
-        and run the following command:
+        - Install the `Ollama` tool from [Ollama Website](https://ollama.com/)
+        - Run the following command:
         ```sh
         ollama serve
         ```
-        - the local API will be running on `http://localhost:11434`: you will fing a message like this:
+        - The local API will be running on `http://localhost:11434`. You will see a message like this:
         ```plaintext
         Ollama is running
         ```
+        - You can install any LLM model you want using the following command:
+        ```sh
+        ollama run <model_name>
+        ```
+        and all the models you have will appear in the selection list in the Streamlit interface.
+        <!-- image -->
+        ![Image](assets/model_selection.png)
 
 ## Usage
 
@@ -48,9 +71,9 @@ InfoCV is a resume processing tool that extracts and processes information from 
     streamlit run app.py
     ```
 2. Upload a resume file (PDF or DOCX) and select a model to process the resume.
-3. choose the model you want to use to process the resume.
-4. choose either using `resume analysis` or `job fit` to process the resume.
-5. press the `Process` and let the magic happen!
+3. Choose the model you want to use to process the resume.
+4. Choose either [`resume analysis`] or [`job fit`] to process the resume.
+5. Press the [`Process`] button and let the magic happen!
 
 ## Project Structure
 
@@ -58,44 +81,45 @@ InfoCV is a resume processing tool that extracts and processes information from 
 InfoCV/
 ├── app.py
 ├── data/
-│   ├── data_raw/
-│   └── preprocessed_data/
-├── evaluations/
-│   └── evaluate.py
-├── InfoCV.egg-info/
-├── Interface/
-│   └── Interface.py
-├── models/
-│   └── API.py
+│   └── data_raw/
+├── images/
+├── libs/
+│   ├── evaluations/
+│   ├── Interface/
+│   ├── models/
+│   ├── prompts/
+│   └── utils/
 ├── notebooks/
-│   └── raport.ipynb
-├── reports/
+├── tests/
+├── .github/
+│   └── ISSUE_TEMPLATE/
+├── LICENSE
+├── README.md
+├── pytest.ini
 ├── requirements.txt
 ├── setup.py
-├── test.py
-├── tests/
-│   ├── conftest.py
-│   ├── test_imports.py
-│   ├── test_models.py
-│   └── test_utils.py
-├── TODO
-└── utils/
-    └── extraction.py
 ```
 
-- [`app.py`]: Main application script.
-- [`data/`]: Directory for storing raw and preprocessed data.
-- [`evaluations/`]: Scripts for evaluating the models.
-- [`Interface/`]: Streamlit interface for user interaction.
-- [`models/`]: Contains the API for processing resumes.
+- [`app.py`] : Main application script.
+- [`images/`] : Directory for storing images used in the application.
+- [`libs/`]: Contains various libraries and modules.
+  - `evaluations/`: Scripts for evaluating the models.
+  - `Interface/`: Streamlit interface for user interaction.
+  - `models/`: Contains the API for processing resumes.
+  - `prompts/`: Contains prompt templates for different analyses.
+  - `utils/`: Utility scripts for data extraction and logging.
 - [`notebooks/`]: Jupyter notebooks for experiments and reports.
-- [`reports/`]: Directory for storing reports.
 - [`tests/`]: Unit tests for the project.
-- [`utils/`]: Utility scripts for data extraction and logging.
+- [`.gitignore`]: Git ignore file.
+- [`LICENSE`]: License file.
+- [`README.md`]: This README file.
+- [`pytest.ini`]: Pytest configuration file.
+- [`requirements.txt`]: List of required packages.
+- [`setup.py`]: Setup script for the project.
 
 ## Contributing
 
-Contributions are welcome! Please check [Issues Page](https://github.com/bssayla/InfoCv/issues) for a list of tasks and improvements.
+Contributions are welcome! Please check the [Issues Page](https://github.com/bssayla/InfoCv/issues) for a list of tasks and improvements.
 
 1. Fork the repository.
 2. Create a new branch (`git checkout -b feature-branch`).
@@ -104,9 +128,10 @@ Contributions are welcome! Please check [Issues Page](https://github.com/bssayla
 5. Create a new Pull Request.
 
 ## License
+
 Free software: [MIT license](LICENSE)
 
-### Reporting Issues
+## Reporting Issues
 
 When reporting issues, please use our issue templates. We have templates for different types of issues to ensure we get all the necessary information:
 
@@ -115,9 +140,9 @@ When reporting issues, please use our issue templates. We have templates for dif
 3. **Documentation Improvements**: Use this to suggest changes or additions to our documentation.
 
 To use a template:
-1. Go to the "Issues" tab in our GitHub repository
-2. Click on "New Issue"
-3. Choose the appropriate template from the list
-4. Fill out the template with as much detail as possible
+1. Go to the "Issues" tab in our GitHub repository.
+2. Click on "New Issue".
+3. Choose the appropriate template from the list.
+4. Fill out the template with as much detail as possible.
 
 Using these templates helps us address issues more effectively and efficiently. Thank you for your contributions!
