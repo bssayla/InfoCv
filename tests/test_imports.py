@@ -29,4 +29,3 @@ def test_external_imports():
     from langchain_ollama import OllamaLLM
     from pypdf import PdfReader
     from setuptools import find_packages, setup
-    from transformers import AutoModelForCausalLM, AutoTokenizer
